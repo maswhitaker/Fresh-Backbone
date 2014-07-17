@@ -1,5 +1,5 @@
 var PlanetList = Backbone.View.extend({
-  tagName: 'a',
+  tagName: '',
   template: _.template($('#template-target').html()),
   render: function(){
     this.$el.html(this.template(this.model.toJSON()));
@@ -11,7 +11,13 @@ var PlanetList = Backbone.View.extend({
 });
 
 var PlanetDetail = Backbone.View.extend({
-  el: 'div'
+  el: 'div',
+  initialize: function(){
+    var planetList = new PlanetList();
+  },
+  render: function(){
+
+  }
 });
 
 var Planets = Backbone.Collection.extend({
