@@ -16,7 +16,7 @@ var PlanetDetail = Backbone.View.extend({
     var planetList = new PlanetList();
   },
   render: function(){
-
+    this.render();
   }
 });
 
