@@ -1,53 +1,45 @@
-var Planet = Backbone.Model.extend({
-  attributes: '_id',
-  defaults: {
-    name: '',
-    info: '',
-    years-old: '',
-    imgUrl: ''
+var PlanetList = Backbone.View.extend({
+  tagName: 'a',
+  template: _.template($('#template-target').html()),
+  render: function(){
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  },
+  initialize: function(){
+    this.render();
   }
 });
 
-var planet = new Planet();
+var PlanetDetail = Backbone.View.extend({
+  el: 'div'
+});
 
-var Universe = Backbone.Collection.extend({
+var Planets = Backbone.Collection.extend({
   model: Planet
 });
 
-var universe = new Universe();
+var Planet = Backbone.Model.extend({
+  urlRoot: '/planets',
+defaults:{
+  name: '',
+  Url: '',
+  imgUrl: ''
+}
+});
 
-var PlanetView = Backbone.View.extend({
-  tagName: 'li',
-  template: _.template($('#planet-template').html()),
-  render: function(){
-      this.$el.html(this.template(this.model.toJSON()));
+var Router = Backbone.Router.extend({
+  routes:{
+    '': 'home',
+    '/:id': 'planetDisplay'
   }
 });
 
-var UniverseView = Backbone.View.extend({
-  el: "#planetApp",
-  initialize: function(){
-    this.input = this.$("#new-planet");
-    
-  },
-  render: function(){
-
-  },
-  events: {
-    'click .planet': 'displayPlanet'
-  }
+var router = new Router();
+router.on("route:home",function(){
+  Planets.render();
+});
+router.on("route:planetDisplay",function(){
+  planets.render();
 });
 
-var PlanetRouter = Backbone.Router.extend({
-  routes: {
-    '': 'homePage',
-    'friends/': 'universePage',
-    'friends/id': 'planetPage'
-  },
-  universePage: function(){
-    var universePage = new UniverseView();
-  },
-  planetPage: function(){
-    var planetPage = new PlanetView();
-  }
-});
+Backbone.history.start();

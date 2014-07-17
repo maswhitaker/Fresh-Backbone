@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
+    <link href='http://fonts.googleapis.com/css?family=Special+Elite|Squada+One' rel='stylesheet' type='text/css'>
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>Fresh Backbone</title>
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -28,24 +29,49 @@
         <h1>The Universe</h1>
         <h2>Application by Mason Whitaker</h2>
       </div>
-      <div id="logo">
-      </div>
     </header>
 
     <section>
-      <div id="target">
-        <ul id="ul-target">
-        </ul>
-      </div>
+      <nav>
+        <script type="text/template" id="template-target">
+          <div class="planet">
+            <ul>
+              <li>
+                <a href="<% planet.url %>"><%= planet.name %></a>
+                <img src="<%= planet.imgUrl %>">
+              </li>
+            </ul>  
+          </div>
+        </script>
+      </nav>
     </section>
 
     <aside>
       <nav>
-        <a href="#">First-Planet</a>
-        <a href="#">Second-Planet</a>
-        <a href="#">Third-Planet</a>
-        <a href="#">Fourth-Planet</a>
-        <a href="#">Fifth-Planet</a>
+        <div class="planet">
+          <a href="#/mars">Mars</a>
+          <img src="http://i.imgur.com/ptzox8q.jpg" id="mars">
+        </div>
+        <div class="planet">
+          <a href="#/jupiter">Jupiter</a>
+          <img src="http://i.imgur.com/IULkCb8.jpg" id="jupiter">
+        </div>
+        <div class="planet">
+          <a href="#/uranus">Uranus</a>
+          <img src="http://i.imgur.com/LA1RyyX.jpg" id="uranus">
+        </div>
+        <div class="planet">
+          <a href="#/saturn">Saturn</a>
+          <img src="http://i.imgur.com/23ya4dd.jpg" id="saturn">
+        </div>
+        <div class="planet">
+          <a href="#/venus">Venus</a>
+          <img src="http://i.imgur.com/Kqlp3hV.jpg" id="venus">
+        </div>
+        <div class="planet">
+          <a href="#/mercury">Mercury</a>
+          <img src="http://i.imgur.com/8151u9d.jpg" id="mercury">
+        </div>
       </nav>
     </aside>
 
@@ -60,6 +86,7 @@
     <script src="../bower_components/jquery/dist/jquery.js"></script>
     <script src="../bower_components/underscore/underscore.js"></script>
     <script src="../bower_components/backbone/backbone.js"></script>
+    <script src="../bower_components/backbone.localstorage/backbone.localStorage-min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
